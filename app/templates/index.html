@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Game Feather</title>
+    <title>news feather</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
 
@@ -23,14 +23,20 @@
 
     <h2>news feather - all</h2>
 
-    <ul>
-      <li><a href="/">all</a></li>
-      <li><a href="/valve">valve</a></li>
-    </ul>
-
     <p>
       Welcome to the news feather. We are an aggregator site for the news of, well, everything! Currently we are under development and only have news from the main Valve games.
     </p>
+
+  {% block content %}
+    <div class="row">
+    {% for e in entries %}
+        <div class="col-md-4 col-lg-3">
+            <h2><a href="{{ e.link }}">{{ e.title }}</a></h2>
+            <h5>published on: {{ e.published }}</h5>
+        </div>
+    {% endfor %}
+    </div>
+  {% endblock %}
 
   </body>
 </html>
