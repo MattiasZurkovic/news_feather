@@ -44,6 +44,7 @@ def tech_page():
 
     return render_template('tech.html', entries=all_entries_sorted)
 
+
 @app.route('/politics')
 def politics_page():
     POL_URLS = ['https://www.realwire.com/rss/?id=467&row=&view=Synopsis',
@@ -58,6 +59,25 @@ def politics_page():
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
     return render_template('politics.html', entries=all_entries_sorted)
+
+
+@app.route('/science')
+def science_page():
+    SCIENCE_URLS = ['http://rss.nytimes.com/services/xml/rss/nyt/Science.xml',
+                    'https://www.reddit.com/r/science/.rss',
+                    'http://feeds.sciencedaily.com/sciencedaily/top_news/top_science',
+                    'http://rss.sciam.com/ScientificAmerican-News',
+                    'http://www.eurekalert.org/rss/technology_engineering.xml'
+                    ]
+
+    entries = []
+    for url in SCIENCE_URLS:
+        entries.extend(feedparser.parse(url).entries)
+
+    all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
+
+    return render_template('science.html', entries=all_entries_sorted)
+
 
 
 if __name__ == '__main__':
