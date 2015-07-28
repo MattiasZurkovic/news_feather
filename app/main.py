@@ -107,7 +107,22 @@ def business_page():
 
     return render_template('index.html', entries=all_entries_sorted, title=title)
 
+@app.route('/sports')
+def sport_page():
+    SPORT_URLS = ['http://rss.cnn.com/rss/edition_sport.rss',
+                  'http://rss.nytimes.com/services/xml/rss/nyt/Sports.xml',
+                  'http://sports.espn.go.com/espn/rss/news'
+                 ]
 
+    entries = []
+    for url in SPORT_URLS:
+        entries.extend(feedparser.parse(url).entries)
+
+    all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
+
+    title = "News Feather - Sports"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 if __name__ == '__main__':
     app.run()
