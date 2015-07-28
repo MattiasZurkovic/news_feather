@@ -13,15 +13,28 @@
     font-family: 'Roboto', sans-serif;
   }
 
-  #valve_block {
+  .content {
     margin: 0 auto;
     width: 800px;
+    margin-top: 60px;
   }
+
+
+  .nav ul li {
+    list-style: none;
+    float: left;
+    padding-right: 10px;
+    display: inline-block;
+    list-style-type: none;
+  }
+
+  .nav {
+
+  }
+
   </style>
 
   <body>
-
-    <h2>{{ title }}</h2>
 
     <div class="nav">
       <ul>
@@ -31,10 +44,12 @@
         <li><a href="/politics">Politics</a></li>
         <li><a href="/science">Science</a></li>
         <li><a href="/sports">Sports</a></li>
-
       </ul>
     </div>
 
+    <h2>{{ title }}</h2>
+
+<div class='content'>
   {% block content %}
     <div class="row">
     {% for e in entries %}
@@ -45,6 +60,7 @@
     {% endfor %}
     </div>
   {% endblock %}
+</div>
 
   </body>
 </html>
