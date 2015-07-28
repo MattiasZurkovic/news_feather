@@ -9,12 +9,6 @@ from hashlib import sha1
 app = Flask(__name__)
 
 
-# URLs
-# 'http://www.forbes.com/real-time/feed2/'         ##### Forbes - Lastest Headlines
-#
-
-
-
 # The index method and page will show the TOP(most popular) news stories from all the sources(i.e. CNN, Forbes, BBC, etc.)
 @app.route('/')
 def index():
@@ -25,7 +19,6 @@ def index():
                 'http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml', ##### NY Times - World News
                 ]
 
-    ##### Valve Feed
     entries = []
     for url in TOP_URLS:
         entries.extend(feedparser.parse(url).entries)
@@ -36,12 +29,36 @@ def index():
 
 
 @app.route('/tech')
-def tech():
+def tech_page():
     TECH_URLS = ['http://feeds.feedburner.com/TechCrunch/',
                  'http://www.wired.com/category/gear/feed/',
                  'http://rss.cnn.com/rss/edition_technology.rss',
-                 'http://rss.slashdot.org/Slashdot/slashdotDevelopers',
+                 'http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml'
+                 ]
+
+    entries = []
+    for url in TECH_URLS:
+        entries.extend(feedparser.parse(url).entries)
+
+    all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
+
+    return render_template('tech.html', entries=all_entries_sorted)
+
+@app.route('/politics')
+def politics_page():
+    POL_URLS = ['https://www.realwire.com/rss/?id=467&row=&view=Synopsis',
+                'http://feeds.reuters.com/Reuters/PoliticsNews',
+
                 ]
+
+    entries = []
+    for url in POL_URLS:
+        entries.extend(feedparser.parse(url).entries)
+
+    all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
+
+    return render_template('politics.html', entries=all_entries_sorted)
+
 
 if __name__ == '__main__':
     app.run()
