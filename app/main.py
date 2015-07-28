@@ -25,7 +25,9 @@ def index():
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
-    return render_template('index.html', entries=all_entries_sorted)
+    title = "News Feather - Home"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 
 @app.route('/tech')
@@ -42,7 +44,9 @@ def tech_page():
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
-    return render_template('tech.html', entries=all_entries_sorted)
+    title = "News Feather - Tech"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 
 @app.route('/politics')
@@ -58,7 +62,9 @@ def politics_page():
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
-    return render_template('politics.html', entries=all_entries_sorted)
+    title = "News Feather - Politics"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 
 @app.route('/science')
@@ -77,7 +83,9 @@ def science_page():
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
-    return render_template('science.html', entries=all_entries_sorted)
+    title = "News Feather - Science"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 
 @app.route('/business')
@@ -95,7 +103,9 @@ def business_page():
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
 
-    return render_template('science.html', entries=all_entries_sorted)
+    title = "News Feather - Business"
+
+    return render_template('index.html', entries=all_entries_sorted, title=title)
 
 
 
