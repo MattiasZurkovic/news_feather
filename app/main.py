@@ -67,11 +67,30 @@ def science_page():
                     'https://www.reddit.com/r/science/.rss',
                     'http://feeds.sciencedaily.com/sciencedaily/top_news/top_science',
                     'http://rss.sciam.com/ScientificAmerican-News',
-                    'http://www.eurekalert.org/rss/technology_engineering.xml'
+                    'http://www.eurekalert.org/rss/technology_engineering.xml',
+                    'http://www.economist.com/sections/science-technology/rss.xml'
                     ]
 
     entries = []
     for url in SCIENCE_URLS:
+        entries.extend(feedparser.parse(url).entries)
+
+    all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
+
+    return render_template('science.html', entries=all_entries_sorted)
+
+
+@app.route('/business')
+def business_page():
+    BUSINESS_URLS = ['http://www.forbes.com/business/feed/',
+                     'http://feeds.feedburner.com/entrepreneur/latest',
+                     'http://feeds.inc.com/home/updates',
+                     'http://www.economist.com/sections/business-finance/rss.xml'
+
+                     ]
+
+    entries = []
+    for url in BUSINESS_URLS:
         entries.extend(feedparser.parse(url).entries)
 
     all_entries_sorted = sorted(entries, key=lambda e: e.published_parsed, reverse=True)
