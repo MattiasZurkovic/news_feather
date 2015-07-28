@@ -20,7 +20,9 @@ app = Flask(__name__)
 def index():
     TOP_URLS = ['http://www.forbes.com/feeds/popstories.xml',     ##### Forbes - Most Popoular
                 'http://rss.cnn.com/rss/edition.rss',             ##### CNN - Most Popular
-
+                'http://feeds.wired.com/wired/index',             ##### Wired - Most Popular
+                'http://www.cbc.ca/cmlink/rss-world',             ##### CBC - Most Popular (World News)
+                'http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml', ##### NY Times - World News
                 ]
 
     ##### Valve Feed
@@ -32,6 +34,14 @@ def index():
 
     return render_template('index.html', entries=all_entries_sorted)
 
+
+@app.route('/tech')
+def tech():
+    TECH_URLS = ['http://feeds.feedburner.com/TechCrunch/',
+                 'http://www.wired.com/category/gear/feed/',
+                 'http://rss.cnn.com/rss/edition_technology.rss',
+                 'http://rss.slashdot.org/Slashdot/slashdotDevelopers',
+                ]
 
 if __name__ == '__main__':
     app.run()
