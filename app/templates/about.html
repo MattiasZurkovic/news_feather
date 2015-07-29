@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ title }}</title>
+    <title>News Feather - About</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
 
@@ -15,6 +15,7 @@
     padding: 0;
     background-color: #eceff1;
     color: #37474f;
+    min-height: 100%;
   }
 
   .content {
@@ -103,26 +104,27 @@
     </div>
 
   <div class="title">
-    <h2>{{ title }}</h2>
+    <h2>News Feather - About</h2>
   </div>
 
 <div class='content'>
-  {% block content %}
-    <div class="row">
-    {% for e in entries %}
-        <div class="col-md-4 col-lg-3">
-            <h2><a href="{{ e.link }}">{{ e.title }}</a></h2>
-            <h5>Published on: {{ e.published }}</h5>
-        </div>
-    {% endfor %}
-    </div>
-  {% endblock %}
+  <p>
+    <a href="/">News Feather</a> is a news aggregator site that displays all the recent news from sources (i.e. CNN, Wired, TC, etc.).
+  </p>
+  <p>
+    The site was developed by one person, Mattias Zurkovic, because I wanted it to help me learn Python web development and using the lightweight Flask framework.
+  </p>
+  <p>
+    <a href="/">News Feather</a> is also open-source! While under development I tracked all the files, changes and code on GitHub. If you are familiar with Git and GitHub go ahead and <a href="https://github.com/MattiasZurkovic/news_feather">get the News Feather source code</a>, if not read their tutorials and documentation.
+  </p>
+
 </div>
+
 
 <footer>
 
 <ul>
-  <li><a href="/about">About</a></li>
+  <li><a href="#">About</a></li>
   <li><a href="#">Legal</a></li>
   <li><a href="#">Contact</a></li>
 </ul>

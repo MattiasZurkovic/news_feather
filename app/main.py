@@ -124,5 +124,19 @@ def sport_page():
 
     return render_template('index.html', entries=all_entries_sorted, title=title)
 
+
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
+
+@app.route('/legal')
+def legal_page():
+    return render_template('legal.html')
+
+@app.route('/contact')
+def contact_page():
+    return render_template('contact.html')
+
+
 if __name__ == '__main__':
     app.run()
