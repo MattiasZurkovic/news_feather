@@ -11,22 +11,40 @@
 
   body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eceff1;
+    color: #37474f;
   }
 
   .content {
     margin: 0 auto;
     width: 800px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #cfd8dc;
+    border:1px solid #b0bec5;
+    border-radius: 5px;
+  }
+
+  .content a {
+    color: #283593;
+  }
+
+  .content a:hover {
+    color: #5c6bc0;
   }
 
   .nav {
+    border-bottom:1px solid #b0bec5;
     list-style:none;
     margin:0;
     padding:0;
     text-align:center;
   }
   .nav li {
-    line-height: 20px;
-    height: 20px;
     display:inline;
   }
 
@@ -34,6 +52,11 @@
     text-decoration: none;
     display:inline-block;
     padding:10px;
+    color: #37474f;
+  }
+
+  .nav a:hover {
+    color: #78909c;
   }
 
   .title {
@@ -65,7 +88,7 @@
     {% for e in entries %}
         <div class="col-md-4 col-lg-3">
             <h2><a href="{{ e.link }}">{{ e.title }}</a></h2>
-            <h5>published on: {{ e.published }}</h5>
+            <h5>Published on: {{ e.published }}</h5>
         </div>
     {% endfor %}
     </div>
