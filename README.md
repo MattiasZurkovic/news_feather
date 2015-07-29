@@ -1,4 +1,4 @@
-News feather
+News Feather
 ================
 
 About
