@@ -113,7 +113,7 @@ def sport_page():
                   'http://rss.nytimes.com/services/xml/rss/nyt/Sports.xml',
                   'http://sports.espn.go.com/espn/rss/news'
                  ]
-
+    
     entries = []
     for url in SPORT_URLS:
         entries.extend(feedparser.parse(url).entries)
