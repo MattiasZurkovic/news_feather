@@ -3,6 +3,7 @@ __author__ = 'mattias'
 from flask import Flask
 from flask import render_template
 import feedparser
+
 import urllib, collections, hmac, binascii, time, random, string
 from hashlib import sha1
 
@@ -137,6 +138,7 @@ def legal_page():
 def contact_page():
     return render_template('contact.html')
 
+# Run app
 
 if __name__ == '__main__':
     app.run()
