@@ -138,7 +138,7 @@ def legal_page():
 def contact_page():
     return render_template('contact.html')
 
-# Run app
+
 
 if __name__ == '__main__':
     app.run()
