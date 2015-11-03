@@ -1,0 +1,2 @@
+feedparser == 5.2.1.egg
+Flask == 0.10.1.egg
