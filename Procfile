@@ -1,1 +1,1 @@
-web: gunicorn newsfeather:app --log-file=-
+web: gunicorn app:app
